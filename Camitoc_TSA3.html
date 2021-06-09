@@ -1,0 +1,132 @@
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+  body{
+    background: #fbc6a4;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #a7d0cd;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.2);
+    border-radius: 20px;
+    padding-bottom: 20px;
+    width: 320px;
+  }
+  .display {
+    width: 100%;
+    height: 60px;
+    padding: 40px 0;
+    background: #7b6079;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+  }
+  .buttons {
+    padding: 20px 20px 0 20px;
+  }
+  #clear, #bckspace{
+    width: 45%;
+    margin-left: 8px;
+  }
+  .row {
+    width: 280px;
+    float: left;
+  }
+  input[type=button] {
+    width: 60px;
+    height: 60px;
+    float: left;
+    padding: 0;
+    margin: 5px;
+    box-sizing: border-box;
+    background: #ecedef;
+    border: none;
+    font-size: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    font-weight: 700;
+    color: #161616;
+    cursor: pointer;
+  }
+  input[type=button]:hover{
+    background: #de8971;
+    color: #fff;
+  }
+  input[type=text] {
+    width: 270px;
+    height: 60px;
+    float: left;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    background: none;
+    color: #ffffff;
+    text-align: right;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 60px;
+    margin: 0 25px;
+  }
+  .equal{
+    background: #de8971 !important;
+    color: #ffffff !important;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <form name="form">
+      <div class="display">
+        <input type="text" placeholder="0" id="disp" name="displayResult"/>
+      </div>
+      <div class="buttons">
+        <div class="row">
+          <input type="button" name="clear" value="C" id="clear" onClick="clearNum()">
+          <input type="button" name="backspace" value="<" id="bckspace" onClick="backSpace()">
+        </div>
+        <div class="row">
+          <input type="button" name="b7" value="7" onClick="calcNumbers(b7.value)">
+          <input type="button" name="b8" value="8" onClick="calcNumbers(b8.value)">
+          <input type="button" name="b9" value="9" onClick="calcNumbers(b9.value)">
+          <input type="button" name="add" value="+" onClick="calcNumbers(add.value)">
+        </div>
+        <div class="row">
+          <input type="button" name="b4" value="4" onClick="calcNumbers(b4.value)">
+          <input type="button" name="b5" value="5" onClick="calcNumbers(b5.value)">
+          <input type="button" name="b6" value="6" onClick="calcNumbers(b6.value)">
+          <input type="button" name="sub" value="-" onClick="calcNumbers(sub.value)">
+        </div>
+        <div class="row">
+          <input type="button" name="b1" value="1" onClick="calcNumbers(b1.value)">
+          <input type="button" name="b2" value="2" onClick="calcNumbers(b2.value)">
+          <input type="button" name="b3" value="3" onClick="calcNumbers(b3.value)">
+          <input type="button" name="multi" value="*" onClick="calcNumbers(multi.value)">
+        </div>
+        <div class="row">
+          <input type="button" name="b0" value="0" onClick="calcNumbers(b0.value)">
+          <input type="button" name="dot" value="." onClick="calcNumbers(dot.value)">
+          <input type="button" name="div" value="/" onClick="calcNumbers(div.value)">
+          <input type="button" class="equal" value="=" onClick="displayResult.value=eval(displayResult.value)">
+        </div>
+      </div>
+    </form>
+  </div>
+  <script>
+  function calcNumbers(result){
+    form.displayResult.value=form.displayResult.value+result;
+  }
+  function clearNum(){
+    document.getElementById("disp").value = "";
+  }
+  function backSpace() {
+    var x = document.getElementById("disp").value;
+    document.getElementById("disp").value = x.substr(0, x.length - 1);
+  }
+</script>
+</body>
+</html>
